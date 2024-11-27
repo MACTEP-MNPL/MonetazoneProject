@@ -1,0 +1,106 @@
+@import "@scss/_variables.scss";
+
+button {
+  padding: .8rem 1.8rem;
+
+  border-radius: 1rem;
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  transition-duration: 1s !important;
+
+  &.basic {
+    background: $mainButtonColor;
+    color: white;
+
+    &:hover {
+      background: $blackColor;
+    }
+  }
+
+  &.transparent {
+    font-size: 1.3rem;
+    font-weight: 500;
+    background: $whiteColor;
+    color: $mainColor;
+
+    border: 1px solid $mainColor;
+
+    padding-top: 0.2rem !important;
+    padding-bottom: 0.2rem !important;
+
+    border-radius: 7px;
+
+    &:hover {
+      background: $mainColor;
+      color: $whiteColor;
+    }
+  }
+
+  &.wide {
+    padding: 1.3rem 6rem;
+  }
+
+  &.invertBtn {
+    background: $whiteColor;
+
+    color: $mainColor;
+
+    border: 1px solid $whiteColor;
+
+    &:hover {
+      background: $mainColor;
+      color: $whiteColor;
+
+      border: 1px solid $whiteColor;
+    }
+  }
+
+  &.white {
+    background: $whiteColor;
+
+    color: $blackColor;
+
+    border: 1px solid $whiteColor;
+
+    & div {
+      transition-duration: .3s;
+    }
+
+    &:hover {
+      background: $blackColor;
+      color: $whiteColor;
+
+      & div {
+        color: $whiteColor !important;
+      }
+    }
+
+  }
+  &.whiteBrd {
+    background: $whiteColor;
+
+    color: $blackColor;
+
+    border: 1px solid $blackColor;
+
+    & div {
+      transition-duration: .3s;
+    }
+
+    &:hover {
+      background: $blackColor;
+      color: $whiteColor;
+
+      & div {
+        color: $whiteColor !important;
+      }
+    }
+  }
+
+  &.blue {
+    color: $whiteColor;
+    background: $mainColor;
+  }
+}

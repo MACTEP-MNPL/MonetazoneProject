@@ -1,0 +1,128 @@
+@import '@scss/_variables.scss';
+
+.aboutPage section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+}
+
+section.aboutPage-first {
+  height: calc(100vh - 60px);
+
+  & .title {
+    width: 40rem;
+    text-wrap: wrap;
+  }
+
+  & .left {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    padding: 2rem 3rem;
+
+    background-color: $mainColor;
+
+    border-radius: 1.5rem;
+
+    color: $whiteColor;
+
+    position: relative;
+
+    height: 18rem;
+    width: 30rem;
+
+    & img {
+      position: absolute;
+
+      width: 23rem !important;
+      height: 23rem !important;
+
+      bottom: -50%;
+      right: -30%;
+    }
+  }
+
+  & .pageRight {
+    & .badges {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, auto);
+    }
+  }
+}
+
+section.aboutPage-second {
+
+  & .pageLeft {
+    p {
+      text-wrap: wrap;
+    }
+  }
+
+  & img {
+    width: 40rem;
+  }
+}
+
+section.aboutPage-third {
+  & img {
+    width: 35rem;
+  }
+}
+section.aboutPage-fourth {
+  & img {
+    width: 30rem;
+  }
+}
+section.aboutPage-fifth {
+  & img {
+    width: 40rem;
+  }
+
+  & .buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+
+    gap: 0.3rem
+  }
+}
+section.aboutPage-sixth {
+  & img {
+    width: 40rem;
+  }
+
+  .aboutBadges {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.3rem;
+    text-align: center;
+  }
+}
+section.aboutPage-seventh {
+  & img {
+    width: 30rem;
+  }
+
+  & .pageRight {
+    & div {
+      display: flex;
+      flex-direction: row;
+      gap: .3rem;
+
+      & .aboutBadges {
+        display: flex;
+        flex-direction: row;
+        gap: .3rem;
+      }
+    }
+  }
+}
+section.aboutPage-eight {
+  & img {
+    width: 35rem;
+  }
+}

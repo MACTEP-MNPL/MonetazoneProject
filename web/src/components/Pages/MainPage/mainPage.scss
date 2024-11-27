@@ -1,0 +1,155 @@
+@import "@scss/_variables.scss";
+
+
+div.mainPage-third {
+
+  display: flex;
+  flex-direction: column;
+
+  padding-bottom: 15rem;
+
+  & .steps {
+
+    & .arrow img {
+      width: 5rem;
+    }
+  }
+  
+
+  .two {
+    position: absolute;
+    right: 0;
+    top: 10rem;
+    z-index: 2;
+  }
+
+  .four {
+    position: absolute;
+    right: 0;
+    top: 30rem;
+    z-index: 4;
+
+    & img {
+      height: 17rem;
+      position: absolute;
+      bottom: 0;
+    }
+  }
+
+  & .title {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+
+    & div {
+      width: 35rem;
+
+      text-align: right;
+    }
+  }
+
+  & .bottom {
+    display: flex;
+    justify-content: center;
+  }
+
+  & .steps {
+    width: 100%;
+    max-width: 80rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    gap: 5rem;
+
+    & p {
+      width: 20rem;
+
+      white-space: normal;
+    }
+
+    & .arrow {
+      display: flex;
+
+    }
+  }
+
+  & div.step {
+    width: 45rem;
+    height: 15rem;
+
+    background-color: $whiteColor;
+
+    border-radius: 1.5rem;
+
+    padding: 1.5rem 2.5rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &.left {
+      border: 1px solid black;
+
+      &.one {
+        z-index: 1;
+      }
+
+      &.three {
+        z-index: 3;
+      }
+
+    }
+
+    &.right {
+      border: 1px solid $mainColor;
+      color: $mainColor;
+
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+
+      text-align: end;
+    }
+  }
+}
+
+section.mainPage-fourth {
+  & .badges {
+    display: flex;
+    gap: 0.5rem;
+  }
+}
+
+
+section.mainPage-sixth {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  & .section {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+
+    & img {
+      width: 35rem;
+    }
+
+    & .body {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+
+      gap: 1rem;
+    }
+
+    & p {
+      width: 30rem;
+      white-space: wrap;
+    }
+  }
+}

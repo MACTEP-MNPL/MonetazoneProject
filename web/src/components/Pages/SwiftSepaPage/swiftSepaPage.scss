@@ -1,0 +1,25 @@
+.swiftSepaPage {
+  section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100vh;
+  }
+
+  .SSP-first {
+      height: calc(100vh - 60px);
+      
+      .badges {
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: repeat(3, auto);
+      }
+  }
+
+  img {
+      width: 35rem;
+  }
+
+  .SSP-seventh {
+      margin-bottom: 8rem;
+  }
+}

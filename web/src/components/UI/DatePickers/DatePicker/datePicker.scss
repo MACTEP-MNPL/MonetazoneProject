@@ -1,0 +1,23 @@
+@import '@scss/_variables.scss';
+
+.datePicker {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.3rem;
+
+  align-items: start;
+
+  & button {
+    padding: 1rem;
+
+    border: 1px solid $blackColor;
+
+    border-radius: 1rem;
+
+    & .gray {
+      color: $grayColor;
+      font-weight: normal;
+    }
+  }
+}

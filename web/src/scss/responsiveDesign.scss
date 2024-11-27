@@ -1,0 +1,554 @@
+@import "variables";
+
+
+html {
+  font-size: 12px;
+}
+
+@media (max-width: 500px) {
+  html {
+    //font-size: 10px;
+    overflow-x: hidden;
+  }
+}
+
+/* Apply 12px font-size for viewports 900px and up */
+@media (min-width: 900px) {
+  html {
+    //font-size: 12px;
+  }
+}
+
+/* Apply 14px font-size for viewports 1200px and up */
+@media (min-width: 1200px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Apply 16px font-size for viewports 1440px and up */
+@media (min-width: 1440px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 1000px) {
+
+  .mobileHeader {
+    padding: 1rem;
+
+    & header {
+      padding: 1rem 1rem;
+      & .right {
+        & .icon {
+          transition-duration: 0s;
+          display: block;
+          &.open {
+            border-radius: 20px;
+            padding: 1.5rem 1rem;
+            width: 100%;
+            display: flex;
+          }
+        }
+      }
+      & .left {
+        gap: 0;
+        flex-direction: column;
+        align-items: start;
+      }
+
+      & .badges {
+        width: 20rem;
+      }
+    }
+  }
+
+  .page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 2rem;
+    gap: 0rem;
+
+    & section {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      gap: 2rem;
+
+      min-height: 800px;
+
+      &.leftSection {
+        width: 80% !important;
+      }
+
+      &.rightSection {
+        & img {
+          order: -1;
+        }
+      }
+
+      &.SSP-first {
+        justify-content: center;
+        align-items: center;
+
+        & .right {
+
+          justify-content: center;
+          align-items: center;
+
+          & h1.title {
+            text-align: center;
+          }
+
+          .badges {
+            display: none;
+          }
+
+          .guide {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+
+  h1 {
+    //font-size: $hMOB;
+
+    & span {
+      //font-size: $hMOB !important;
+    }
+  }
+
+  h2 {
+    //font-size: $hMOB;
+
+    & span {
+      //font-size: $hMOB !important;
+    }
+  }
+
+  header {
+    padding: 0 2rem;
+    height: 6rem;
+
+    & .logo {
+      width: 15rem;
+    }
+  }
+
+
+  p {
+    text-wrap: wrap;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .SSP-seventh {
+    & img {
+      //display: none;
+    }
+  }
+
+  .pageRight {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    gap: 2rem;
+
+    & .badge {
+      display: none;
+    }
+
+    & .guide {
+      display: none;
+    }
+  }
+
+  .mobInput {
+    width: 100%;
+  }
+
+  .withdrawPage section.WP-fifth .services {
+    align-items: center;
+  }
+
+  .pageLeft {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    gap: 2rem;
+
+    & .badge {
+      display: none;
+    }
+  }
+
+  section.aboutPage-first {
+    gap: 5rem;
+
+    & div.left {
+      //display: none;
+
+      height: 15rem;
+      width: 25rem;
+
+      & img {
+        width: 17rem !important;
+      }
+    }
+
+  }
+
+  .aboutBadges {
+    text-align: center;
+    justify-content: center;
+    & .badge {
+      display: block;
+    }
+  }
+
+  .countries {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    & .country {
+      width: 60%;
+      & .top {
+        & .right {
+          flex-direction: column;
+          gap: 0.5rem;
+          justify-content: center;
+
+          & p.badge {
+            width: 100%;
+          }
+        }
+
+        & .left {
+          align-items: start;
+
+          & img {
+            padding-top: 0.2rem;
+          }
+        }
+      }
+    }
+  }
+
+  p.badge {
+    padding: 0.2rem 2rem;
+    font-size: 1.2rem !important;
+
+    text-wrap: nowrap;
+  }
+
+  div.mainPage-third {
+    gap: 2rem;
+
+    & .title {
+      justify-content: center;
+      align-items: center;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+      }
+    }
+
+    & .bottom {
+      & .steps {
+        justify-content: center;
+        align-items: center;
+
+        gap: 2rem;
+
+        & .two {
+          position: static;
+        }
+
+        & .four {
+          position: static;
+          & img {
+            position: absolute;
+            width: 10rem;
+            height: 10rem;
+            bottom: 0;
+            left: -4rem;
+          }
+        }
+
+        & .step {
+          max-width: 35rem;
+          // height: 100%;
+
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+        }
+
+        & .arrow {
+          & img {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .mobileFooter {
+    & .bottom { 
+
+      & .top {
+      flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  }
+
+  .mobApplication {
+    & img {
+      width: 10px;
+    }
+
+    & p {
+      font-size: 1.2rem;
+    }
+
+    & a {
+      font-size: 1.2rem;
+    }
+
+    div {
+      font-size: 1.2rem;
+    }
+
+    & li {
+      font-size: 1.2rem;
+    }
+
+    & button {
+      font-size: 1.2rem;
+    }
+
+    & .applications {
+      & form {
+        & .top {
+          & .inputs {
+            display: flex;
+            flex-direction: column;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  footer.mobileFooter {
+    padding: 2rem 3rem;
+  }
+  button.basic {
+    width: 100%;
+    padding: 1rem 2rem;
+  }
+
+  .aboutPage-first {
+    & .left img {
+      width: 10rem !important;
+    }
+  }
+
+  * {
+    font-size: 13px !important;
+  }
+
+  div.mainPage-third .bottom .steps .step {
+    width: 30rem;
+  }
+
+  h2,h1 {
+    font-size: 2rem !important;
+  }
+
+  p {
+    font-size: 1.4rem;
+  }
+
+  .page section {
+    //gap: 1rem;
+    & span {
+      width: 25rem !important;
+      max-height: 25rem !important;
+  
+      & img {
+        width: 25rem !important;
+        max-height: 25rem !important;
+      }
+    }
+  }
+
+  .countries {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    & .country {
+      width: 100%;
+
+      & .top {
+        & .right {
+          flex-direction: column;
+          gap: 0.5rem;
+          justify-content: center;
+          & p.badge {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  .services .mobInput {
+    width: 100% !important;
+  }
+
+  .pageRight {
+    width: 100% !important;
+  }
+
+  .pageLeft {
+    width: 100% !important;
+  }
+
+  .section-img {
+    height: 20rem !important;
+    //width: 20rem !important;
+  }
+
+  .mainPage-third .bottom div.steps {
+
+    & .four img {
+      width: 1rem;
+    }
+
+    & div.step {
+      width: 25rem;
+      height: 12rem;
+      & p {
+        width: 20rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 380px) {
+
+  .countries .country {
+      width: 20rem;
+
+    & .top .left {
+      gap: .3rem;
+      flex-wrap: wrap;
+      & h2 {
+        font-size: 1.3rem !important;
+      }
+
+      & img {
+        width: 2rem !important;
+      }
+
+    }
+
+  }
+
+  button {
+    & .basic {
+      padding: 1rem 2rem;
+    }
+
+    & .transparent {
+      padding: 1rem 2rem;
+    }
+
+    & .wide {
+      padding: 1rem 2rem;
+    }
+
+    & .invertBtn {
+      padding: 1rem 2rem;
+    }
+
+    & .white {
+      padding: 1rem 2rem;
+    }
+
+    & .blue {
+      padding: 1rem 2rem;
+    }
+
+  }
+
+  .pageRight {
+    gap: 2rem;
+  }
+
+  .pageLeft {
+    gap: 2rem;
+  }
+
+  .mainPage-third .bottom div.steps {
+
+    & div.step {
+      width: 20rem;
+      height: 10rem;
+      & p {
+        width: 15rem;
+      }
+    }
+  }
+
+  .aboutBadges {
+    gap: .5rem !important;
+  }
+
+  .badge {
+    padding: .3rem 1rem !important;
+  }
+
+  .mobileHeader header .left {
+    padding-left: .3rem;
+
+    & .badges {
+      //justify-content: end;
+      width: 10rem;
+    }
+  }
+
+  .mobApplication {
+    width: 25rem;
+
+    & .types .badges {
+      & .mobBadge {
+        padding: .3rem 1rem;
+      }
+    }
+  }
+}
+
+

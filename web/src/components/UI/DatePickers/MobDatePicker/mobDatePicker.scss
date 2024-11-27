@@ -1,0 +1,47 @@
+@import '@scss/variables.scss';
+
+.mobDatePicker {
+    position: relative;
+
+    .trigger {
+        position: relative;
+        width: 100%;
+        outline: 1px solid transparent;
+        transition: outline-color 0.2s ease;
+        border-radius: 1rem;
+
+        &.open {
+            outline-color: $mainColor;
+        }
+
+        .icon {
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $mainColor;
+            z-index: 1;
+        }
+
+        button {
+            width: 100%;
+            padding: 1rem;
+            padding-left: 3rem;
+            border-radius: 1rem;
+            background-color: #F5F5F5;
+            text-align: left;
+            border: none;
+
+            .gray {
+                color: $grayColor;
+            }
+
+            &:focus {
+                outline: 1px solid $mainColor;
+            }
+        }
+    }
+}

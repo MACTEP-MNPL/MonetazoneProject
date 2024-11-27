@@ -1,0 +1,37 @@
+@import '@scss/variables.scss';
+
+.mobInput {
+    position: relative;
+
+    //font-weight: 500;
+
+    width: 100%;
+
+    & .icon {
+        position: absolute;
+        left: 1rem;
+        top: 0;
+
+        height: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        color: $mainColor;
+    }
+
+    & input {   
+        padding: 1rem;
+        padding-left: 3rem;
+        border-radius: 1rem;
+
+        background-color: #F5F5F5;
+
+        width: 100%;
+
+        &:focus {
+            outline: 1px solid $mainColor;
+        }
+    }
+}

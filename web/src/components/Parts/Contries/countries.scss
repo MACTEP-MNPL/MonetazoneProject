@@ -1,0 +1,108 @@
+.countries {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 5rem;
+
+  & .country {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    & .top {
+      display: flex;
+      justify-content: space-between;
+
+
+      & .left {
+        display: flex;
+        gap: 1rem;
+
+        & img {
+          width: 3rem !important;
+        }
+      }
+
+      & .right {
+        display: flex;
+        gap: 1rem;
+
+        justify-content: end;
+        align-items: center;
+      }
+    }
+
+    & .bottom {
+      display: flex;
+      justify-content: space-between;
+      height: 100%;
+
+      & .left {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 3rem;
+
+
+        & div {
+
+          & .cities {
+            display: flex;
+            gap: 0.3rem;
+            flex-wrap: wrap;
+
+            & .city {
+              display: flex;
+              gap: .3rem;
+              justify-content: center;
+              align-items: center;
+
+              background-color: #F1F1F1;
+              padding: .1rem .6rem;
+              border-radius: .4rem;
+
+              & .circle {
+                border-radius: 100%;
+                width: .5rem;
+                height: .5rem;
+                background-color: #407BFF;
+              }
+            }
+          }
+
+          & .currencies {
+            display: flex;
+            gap: 0.3rem;
+            flex-wrap: wrap;
+
+            & .currency {
+              display: flex;
+              gap: .3rem;
+              justify-content: center;
+              align-items: center;
+
+              background-color: #F1F1F1;
+              padding: .1rem .6rem;
+              border-radius: .4rem;
+
+              & .circle {
+                border-radius: 100%;
+                width: .5rem;
+                height: .5rem;
+                background-color: #5DDF00;
+              }
+            }
+          }
+        }
+
+      }
+
+      & .right {
+        display: flex;
+        justify-content: end;
+        align-items: end;
+      }
+    }
+  }
+}

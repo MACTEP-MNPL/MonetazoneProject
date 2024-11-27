@@ -1,0 +1,237 @@
+@import "reset";
+@import "variables";
+@import "./tailwind.scss";
+
+@import url('https://fonts.googleapis.com/css2?family=Trocchi&display=swap');
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+html.noOverflowmobNav {
+  overflow: hidden !important;
+}
+
+html.noOverflowapp {
+  overflow: hidden !important;
+}
+
+.page {
+  padding: 0 8rem;
+}
+
+.lastSection {
+  padding-bottom: 8rem;
+}
+
+* {
+  font-family: 'Onest', sans-serif;
+
+  //font-family: 'TT Firs Neue', sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.3;
+
+  //transition-duration: .3s;
+
+  //white-space: nowrap;
+}
+
+.noAnimation {
+  transition-duration: 0s;
+}
+
+button {
+  white-space: nowrap;
+}
+
+h1 {
+  font-size: $h1FS;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: $h2FS;
+  font-weight: 600;
+}
+
+span {
+  font-family: "Trocchi", serif;
+}
+
+a {
+  cursor: pointer;
+
+  font-size: 1rem;
+
+  font-weight: 500;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-img {
+  width: 35rem !important;
+  height: 35rem !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+p {
+  font-weight: 500;
+
+  font-size: 1rem;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.h1 {
+  font-size: $h1FS;
+}
+
+.DatePicker {
+  z-index: 100000;
+}
+
+.input.empty-red {
+  & label {
+    color: $redColor;
+  }
+
+  & input {
+    border-color: $redColor;
+  }
+}
+
+.select.empty-red {
+
+  & .body {
+    border-color: $redColor;
+
+    & .list {
+      li {
+        border-color: $redColor;
+      }
+    }
+  }
+
+  & .label {
+    color: $redColor;
+  }
+}
+
+.datePicker.empty-red {
+  & button {
+    border-color: $redColor;
+  }
+
+  & label {
+    color: $redColor;
+  }
+}
+
+.pageLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 2rem;
+
+  text-align: start;
+
+  width: 65%;
+}
+
+.pageRight {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 2rem;
+
+  text-align: end;
+
+  width: 65%;
+
+  & .badges {
+    display: grid;
+    gap: 0.2rem;
+    row-gap: 0.8rem;
+
+    text-align: center;
+  }
+
+  & .buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    gap: 0.5rem
+  }
+}
+
+.page section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  min-height: 50rem;
+
+  width: 100%;
+
+  & h2 {
+    max-width: 40rem;
+
+    & span {
+      font-size: $h2FS;
+  }
+  }
+
+  & span {
+    width: 40rem !important;
+    max-height: 40rem !important;
+
+    & img {
+      width: 40rem !important;
+      max-height: 40rem !important;
+    }
+  }
+
+  & p {
+    max-width: 30rem;
+    text-wrap: wrap;
+  }
+}
+
+/* Chrome/Safari/Edge scrollbar styles */
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  width: 12px !important;
+  height: 12px !important;
+  display: block !important;
+}
+
+body::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track {
+  background: transparent !important;
+  border-radius: 100% !important;
+}
+
+body::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-thumb {
+  background-color: #407BFF !important;
+  //border: 3px solid white !important;
+  border-radius: 100px !important;
+  background-clip: padding-box !important;
+  
+  &:hover {
+    background-color: #2961ff !important;
+    border-width: 2px !important;
+  }
+}

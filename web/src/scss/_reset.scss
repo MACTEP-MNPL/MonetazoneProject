@@ -1,0 +1,222 @@
+/* ------------------------------------------------------------- */
+/* Advanced CSS Reset - Combination of Normalize and Custom Reset */
+/* ------------------------------------------------------------- */
+
+/* Remove all margins and padding */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* Set default font size, family, and line height */
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
+  font-size: 100%; /* Default font size */
+  font-family: sans-serif; /* Default font family */
+}
+
+/* Reset body styles */
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  background-color: #fff;
+  color: #000;
+}
+
+/* HTML5 display definitions */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section {
+  display: block;
+}
+
+/* Remove default list styles */
+ol,
+ul {
+  list-style: none;
+}
+
+/* Remove default quotes */
+blockquote,
+q {
+  quotes: none;
+}
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: '';
+}
+
+/* Remove default table styles */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+/* Set a consistent appearance for form elements */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  margin: 0;
+  padding: 0;
+  line-height: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+}
+
+/* Remove focus outlines but retain them for keyboard users */
+:focus {
+  outline: none;
+}
+:focus-visible {
+  outline: 2px dashed #000;
+}
+
+/* Reset anchor styles */
+a {
+  background-color: transparent;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Ensure media elements do not exceed their container's width */
+img,
+video,
+audio,
+canvas {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Reset iframe styles */
+iframe {
+  border: 0;
+}
+
+/* Remove built-in form spacing */
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* Remove fieldset and legend margins and padding */
+legend {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove default heading styles */
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+/* Remove text indentation in inputs and buttons */
+input::-ms-clear {
+  display: none;
+}
+
+/* Normalize checkbox and radio appearance */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+/* Remove textarea resizing */
+textarea {
+  resize: none;
+}
+
+/* Remove default button styles */
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  appearance: none;
+  background-color: transparent;
+}
+
+/* Remove spinner from number inputs */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Remove focus border in Firefox */
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+}
+
+/* Normalize select appearance */
+select {
+  appearance: none;
+}
+
+/* Set default text rendering for better legibility */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reset default strong and emphasis styles */
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+/* Reset hr styling */
+hr {
+  border: 0;
+  border-top: 1px solid #ccc;
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+/* Remove the gap between inline elements and block elements */
+button,
+input,
+select,
+textarea {
+  display: inline-block;
+  vertical-align: middle;
+}

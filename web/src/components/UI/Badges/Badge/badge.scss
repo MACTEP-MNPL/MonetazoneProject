@@ -1,0 +1,22 @@
+@import '@scss/_variables.scss';
+
+.badge {
+  padding: 0.05rem 1.5rem;
+
+  border: 1px solid black;
+
+  border-radius: 0.5rem;
+  overflow: hidden;
+
+  background-color: $whiteColor;
+
+  transition: transform 0.3s ease !important;
+
+  white-space: nowrap !important;
+
+  &:hover {
+    transform: scale(1.1) !important;
+
+    z-index: 100;
+  }
+}
