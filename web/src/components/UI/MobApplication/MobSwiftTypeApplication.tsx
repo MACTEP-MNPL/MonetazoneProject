@@ -11,7 +11,7 @@ import nameSVG from "@/assets/svgs/mobile/person.svg"
 import serviceSVG from "@/assets/svgs/mobile/service.svg"
 import officeSVG from "@/assets/svgs/mobile/office.svg"
 import dateSVG from "@/assets/svgs/mobile/clock.svg"
-import dollarSVG from "@/assets/svgs/mobile/dollar.svg"
+import rubSVG from "@/assets/svgs/mobile/rub.svg"
 import walletSVG from "@/assets/svgs/mobile/wallet.svg"
 import globeSVG from "@/assets/svgs/mobile/globe.svg"
 import compassSVG from "@/assets/svgs/mobile/compass.svg"
@@ -115,10 +115,10 @@ export const MobSwiftTypeApplication: FC = () => {
                 return (
                     <>
                         <MobInput icon={compassSVG} placeholder="Назначение платежа" state={paymentAssignment} setState={setPaymentAssignment} />
-                        <MobInput icon={walletSVG} placeholder="Валюта на сделке" state={currency} setState={setCurrency} />
+                        <MobSelect icon={walletSVG} options={['Безналичный рубль']} placeholder="Валюта на сделке" value={currency} setValue={setCurrency} />
                         <MobInput icon={globeSVG} placeholder="Страна зачисления" state={country} setState={setCountry} />
-                        <MobInput type="number" icon={dollarSVG} placeholder="Сумма" state={amount} setState={setAmount} />
-                        <MobInput icon={walletSVG} placeholder="Валюта зачисления" state={intakeCurrency} setState={setIntakeCurrency} />
+                        <MobInput type="number" icon={rubSVG} placeholder="Сумма" state={amount} setState={setAmount} />
+                        <MobSelect icon={walletSVG} options={['RUB', 'USD', 'EUR', 'USDT TRC20']} placeholder="Валюта зачисления" value={intakeCurrency} setValue={setIntakeCurrency} />
                     </>
                 )
             case 3:
@@ -132,7 +132,7 @@ export const MobSwiftTypeApplication: FC = () => {
                         <p>Назначение платежа: {paymentAssignment}</p>
                         <p>Валюта на сделке: {currency}</p>
                         <p>Страна зачисления: {country}</p>
-                        <p>Сумма: {amount}</p>
+                        <p>Сумма: {amount} ₽</p>
                         <p>Валюта зачисления: {intakeCurrency}</p>
                     </div>
                 )

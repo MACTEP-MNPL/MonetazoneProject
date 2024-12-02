@@ -8,7 +8,7 @@ import officeSVG from "@/assets/svgs/mobile/office.svg"
 import dateSVG from "@/assets/svgs/mobile/clock.svg"
 import compassSVG from "@/assets/svgs/mobile/compass.svg"
 import walletSVG from "@/assets/svgs/mobile/wallet.svg"
-import dollarSVG from "@/assets/svgs/mobile/dollar.svg"
+import dollarSVG from "@/assets/svgs/mobile/usd.svg"
 import noteSVG from "@/assets/svgs/mobile/note.svg"
 import globeSVG from "@/assets/svgs/mobile/globe.svg"
 import { MobInput } from "@/components/UI/Inputs/MobInput/MobInput"
@@ -125,7 +125,7 @@ export const MobFeaTypeApplication = () => {
                 return (
                     <>
                         <MobInput icon={compassSVG} placeholder="Назначение платежа" state={paymentAssignment} setState={setPaymentAssignment} />
-                        <MobInput icon={noteSVG} placeholder="Юрисдикция фондов" state={fundsJurisdiction} setState={setFundsJurisdiction} />
+                        <MobInput icon={noteSVG} placeholder="Юрисдикция нахождения средств" state={fundsJurisdiction} setState={setFundsJurisdiction} />
                         <MobInput icon={globeSVG} placeholder="Юрисдикция поступления средств" state={intakeMoneyJurisdiction} setState={setIntakeMoneyJurisdiction} />
                         <MobInput type="number" icon={dollarSVG} placeholder="Сумма сделки" state={amount} setState={setAmount} />
                         <MobInput icon={walletSVG} placeholder="Способ оплаты" state={paymentMethod} setState={setPaymentMethod} />

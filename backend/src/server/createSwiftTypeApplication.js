@@ -1,6 +1,9 @@
 import { db } from '../index.js';
-
+import { createApplication } from './createApplication.js';
 export const createSwiftTypeApplication = async (req) => {
+    
+    const applicationId = await createApplication('swift')
+
     const {
         name,
         date,
@@ -21,6 +24,7 @@ export const createSwiftTypeApplication = async (req) => {
 
     const [response] = await db.execute(
         `INSERT INTO swift_applications (
+            id,
             name,
             date,
             office,
@@ -32,8 +36,9 @@ export const createSwiftTypeApplication = async (req) => {
             intake_currency,
             ip,
             status
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         [
+            applicationId,
             name,
             date,
             office,

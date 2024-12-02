@@ -1,6 +1,10 @@
 import { db } from '../index.js';
+import { createApplication } from './createApplication.js';
 
 export const createFeaTypeApplication = async (req) => {
+
+    const applicationId = await createApplication('fea')
+
     const {
         name,
         date,
@@ -21,6 +25,7 @@ export const createFeaTypeApplication = async (req) => {
 
     const [response] = await db.execute(
         `INSERT INTO fea_applications (
+            id,
             name, 
             date, 
             office, 
@@ -32,8 +37,9 @@ export const createFeaTypeApplication = async (req) => {
             payment_method,
             ip,
             status
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         [
+            applicationId,
             name,
             date,
             office,

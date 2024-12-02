@@ -1,6 +1,10 @@
 import { db } from '../index.js';
+import { createApplication } from './createApplication.js';
 
 export const createCashTypeApplication = async (req) => {
+    
+    const applicationId = await createApplication('cash')
+
     const {
         name,
         date,
@@ -22,6 +26,7 @@ export const createCashTypeApplication = async (req) => {
 
         const [response] = await db.execute(
             `INSERT INTO cash_applications (
+                id,
                 name,
                 date,
                 office,
@@ -33,8 +38,9 @@ export const createCashTypeApplication = async (req) => {
                 exchange_rate,
                 ip,
                 status
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
             [
+                applicationId,
                 name,
                 date,
                 office,
@@ -60,6 +66,7 @@ export const createCashTypeApplication = async (req) => {
 
         const [response] = await db.execute(
             `INSERT INTO cash_applications (
+                id,
                 name,
                 date,
                 office,
@@ -70,8 +77,9 @@ export const createCashTypeApplication = async (req) => {
                 cash_currency,
                 ip,
                 status
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
             [
+                applicationId,
                 name,
                 date,
                 office,
