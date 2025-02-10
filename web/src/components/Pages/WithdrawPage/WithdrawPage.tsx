@@ -9,8 +9,10 @@ import w1 from '@/assets/svgs/withdraw-1.svg'
 import w2 from '@/assets/svgs/withdraw-2.svg'
 import w3 from '@/assets/svgs/withdraw-3.svg'
 import w4 from '@/assets/svgs/withdraw-4.svg'
+import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 
 export const WithdrawPage: FC = () => {
+    useDocumentTitle('НАЛИЧНЫЕ')
     return (
         <div className='withdrawPage page'>
             <Section

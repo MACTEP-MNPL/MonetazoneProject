@@ -11,8 +11,11 @@ import { useDispatch } from 'react-redux';
 import { setAppType, showAppPopUp, isCash } from '@/store/appPopUpSlice.ts';
 import { goToCountriesSection } from '@/components/Utils/goToCountriesSection.ts';
 import { useNavigate } from 'react-router-dom';
+import { useDocumentTitle } from '@/hooks/useDocumentTitle.ts';
+
 
 export const MainPage = () => {
+    useDocumentTitle('ГЛАВНАЯ')
     const dispatch = useDispatch();
 
     const showApplicationPopUp = () => {

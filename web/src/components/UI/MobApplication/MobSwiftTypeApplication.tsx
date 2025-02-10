@@ -18,6 +18,7 @@ import compassSVG from "@/assets/svgs/mobile/compass.svg"
 
 import { SwiftApplicationData } from "@/components/UI/MobApplication/application"
 import { ErrorMessage } from "@/components/UI/ErrorMessage/ErrorMessage.tsx"
+import { endpoints } from "@/utils/api"
 
 export const MobSwiftTypeApplication: FC = () => {
     const dispatch = useAppDispatch()
@@ -76,13 +77,14 @@ export const MobSwiftTypeApplication: FC = () => {
                 }
             };
 
-            const response = await fetch('http://localhost:2999/new', {
+            const response = await fetch(endpoints.newApplication, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(applicationData)
             });
+
 
             if (!response.ok) {
                 throw new Error('Failed to submit application');
@@ -92,9 +94,10 @@ export const MobSwiftTypeApplication: FC = () => {
             
             if (result.success) {
                 dispatch(hideAppPopUp());
+                window.open(result.chatLink, '_blank');
             } else {
                 setSubmitError('Произошла ошибка во время отправки заявки')
-            }
+            }   
         } catch (error) {
             setSubmitError('Произошла ошибка во время отправки заявки')
         }

@@ -1,9 +1,6 @@
 import { db } from '../index.js';
-import { createApplication } from './createApplication.js';
-export const createSwiftTypeApplication = async (req) => {
+export const createSwiftTypeApplication = async (req, applicationId) => {
     
-    const applicationId = await createApplication('swift')
-
     const {
         name,
         date,
@@ -34,9 +31,8 @@ export const createSwiftTypeApplication = async (req) => {
             currency,
             amount,
             intake_currency,
-            ip,
-            status
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+            ip
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         [
             applicationId,
             name,
@@ -48,10 +44,7 @@ export const createSwiftTypeApplication = async (req) => {
             currency,
             amount,
             intakeCurrency,
-            ip,
-            'created'
+            ip
         ]
     );
-
-    return response;
 }; 

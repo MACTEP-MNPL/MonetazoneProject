@@ -1,10 +1,6 @@
 import { db } from '../index.js';
-import { createApplication } from './createApplication.js';
 
-export const createCashTypeApplication = async (req) => {
-    
-    const applicationId = await createApplication('cash')
-
+export const createCashTypeApplication = async (req, applicationId) => {
     const {
         name,
         date,
@@ -16,6 +12,7 @@ export const createCashTypeApplication = async (req) => {
     const ip = req.ip || req.connection.remoteAddress;
 
     if (type === 'cash_exchange') {
+
         const {
             giveAmount,
             giveAmountCurrency,
@@ -25,39 +22,36 @@ export const createCashTypeApplication = async (req) => {
         } = details;
 
         const [response] = await db.execute(
-            `INSERT INTO cash_applications (
+            `INSERT INTO cash_exchange_applications (
                 id,
                 name,
                 date,
                 office,
-                type,
                 give_amount,
                 give_amount_currency,
                 get_amount,
                 get_amount_currency,
                 exchange_rate,
-                ip,
-                status
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                ip
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
             [
                 applicationId,
                 name,
                 date,
                 office,
-                type,
                 giveAmount,
                 giveAmountCurrency,
                 getAmount,
                 getAmountCurrency,
                 rate,
-                ip,
-                'created'
+                ip
             ]
         );
 
-        return response;
     } else if (type === 'cash_withdrawal') {
+
         const {
+            amount,
             country,
             currency,
             city,
@@ -65,36 +59,32 @@ export const createCashTypeApplication = async (req) => {
         } = details;
 
         const [response] = await db.execute(
-            `INSERT INTO cash_applications (
+            `INSERT INTO cash_withdrawal_applications (
                 id,
                 name,
                 date,
                 office,
-                type,
                 country,
                 currency,
                 city,
                 cash_currency,
                 ip,
-                status
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                amount
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
             [
                 applicationId,
                 name,
                 date,
                 office,
-                type,
                 country,
                 currency,
                 city,
                 cashCurrency,
                 ip,
-                'created'
+                amount
             ]
         );
 
-        return response;
-    }
 
-    throw new Error('Invalid cash application type');
+    }
 };

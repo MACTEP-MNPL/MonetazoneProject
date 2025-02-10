@@ -17,6 +17,7 @@ import { hideAppPopUp } from "@/store/appPopUpSlice"
 import { useAppDispatch } from "@/store/hooks"
 import { FeaApplicationData } from "@/components/UI/MobApplication/application"
 import { ErrorMessage } from "@/components/UI/ErrorMessage/ErrorMessage.tsx"
+import { endpoints } from "@/utils/api"
 
 
 
@@ -86,7 +87,7 @@ export const MobFeaTypeApplication = () => {
                 }
             };
 
-            const response = await fetch('http://localhost:2999/new', {
+            const response = await fetch(endpoints.newApplication, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -102,9 +103,10 @@ export const MobFeaTypeApplication = () => {
             
             if (result.success) {
                 dispatch(hideAppPopUp());
+                window.open(result.chatLink, '_blank');
             } else {
                 setSubmitError('Произошла ошибка во время отправки заявки')
-            }
+            }   
         } catch (error) {
             setSubmitError('Произошла ошибка во время отправки заявки')
         }
@@ -128,8 +130,9 @@ export const MobFeaTypeApplication = () => {
                         <MobInput icon={noteSVG} placeholder="Юрисдикция нахождения средств" state={fundsJurisdiction} setState={setFundsJurisdiction} />
                         <MobInput icon={globeSVG} placeholder="Юрисдикция поступления средств" state={intakeMoneyJurisdiction} setState={setIntakeMoneyJurisdiction} />
                         <MobInput type="number" icon={dollarSVG} placeholder="Сумма сделки" state={amount} setState={setAmount} />
-                        <MobInput icon={walletSVG} placeholder="Способ оплаты" state={paymentMethod} setState={setPaymentMethod} />
+                        <MobInput isWide icon={walletSVG} placeholder="Способ оплаты" state={paymentMethod} setState={setPaymentMethod} />
                     </>
+
                 )
             case 3:
                 return (
@@ -140,7 +143,7 @@ export const MobFeaTypeApplication = () => {
                         <p>Дата сделки: {date ? new Date(date).toLocaleDateString() : ''}</p>
                         <p>Офис: {office}</p>
                         <p>Назначение платежа: {paymentAssignment}</p>
-                        <p>Юрисдикция фондов: {fundsJurisdiction}</p>
+                        <p>Юрисдикция нахождения средств: {fundsJurisdiction}</p>
                         <p>Юрисдикция поступления средств: {intakeMoneyJurisdiction}</p>
                         <p>Сумма сделки: {amount}</p>
                         <p>Способ оплаты: {paymentMethod}</p>

@@ -15,8 +15,11 @@ import { setAppType } from "@/store/appPopUpSlice"
 import { showAppPopUp } from "@/store/appPopUpSlice"
 import { useNavigate } from "react-router-dom"
 import { goToCountriesSection } from "@/components/Utils/goToCountriesSection"
-export const AboutPage = () => {
+import { useDocumentTitle } from "@/hooks/useDocumentTitle"
 
+
+export const AboutPage = () => {
+    useDocumentTitle('О НАС')
     const navigator = useNavigate()
 
     const about1Src = useImageLoader(about1)

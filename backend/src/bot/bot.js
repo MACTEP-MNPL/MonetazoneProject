@@ -1,26 +1,93 @@
 import dotenv from 'dotenv'
-import {Bot} from "grammy"
-import axios from 'axios'
+import {Bot, session} from "grammy"
+import {GrammyError, HttpError} from "grammy"
 import {db} from "../index.js"
-import {getNewApplicationMessage} from "./messages/getNewApplicationMessage.js"
-import {getApplicationById} from "../db/getApplicationById.js"
-
+import {newUserJoins} from "./newUserJoins.js"
+import {commands} from "./commands/commands.js"
+import {hears} from "./hears/hears.js"
+import {callbackQueries} from "./callbackQueries/callbackQueries.js"
+import {convers} from "./conversations/conversations.js"
+import {conversations} from "@grammyjs/conversations"
+import {menus} from "./menus/menus.js"
 dotenv.config()
 
 const {TG_BOT_TOKEN} = process.env
 
 export const bot = new Bot(TG_BOT_TOKEN)
 
-bot.command('start', async (ctx) => {
-    await ctx.reply("HI LOX)")
+bot.use(session({
+    initial() {
+      return {};
+    },
+  }));
 
-    //const [row] = await db.execute("INSERT INTO users (id, username) VALUES (?, ?)", [ctx.from.id, ctx.from.username])
-    //console.log(row)
+  bot.use(conversations());
 
-    const application = await getApplicationById(2)
-    console.log(application)
+bot.use(async (ctx, next) => {
+    try {
+        if (!ctx.from) return next()
 
-    await ctx.reply(await getNewApplicationMessage(application.id))
+        const [existingUsers] = await db.execute(
+            'SELECT * FROM users WHERE id = ?',
+            [ctx.from.id]
+        )
+
+        if (existingUsers && existingUsers.length > 0) {
+          if(existingUsers[0].username !== ctx.from.username) {
+            
+            let username = ctx.from.username
+
+            if(!username) {
+              username = 'Нет юзернейма'
+            }
+
+            await db.execute(
+                'UPDATE users SET username = ? WHERE id = ?',
+                [username, ctx.from.id]
+            )
+
+
+          }
+
+          if (existingUsers[0].is_banned) {
+                return
+          }
+        } else {
+            await db.execute(
+                'INSERT INTO users (id, username, is_banned) VALUES (?, ?, FALSE)',
+                [ctx.from.id, ctx.from.username || null]
+            )
+        }
+
+        return next()
+    } catch (error) {
+        console.error('Error in middleware:', error)
+        return next()
+    }
 })
 
+bot.use(newUserJoins)
+
+bot.use(convers)
+
+bot.use(menus)
+
+bot.use(callbackQueries)
+
+bot.use(hears)
+
+bot.use(commands)
+
+bot.catch((err) => {
+    const ctx = err.ctx;
+    console.error(`Error while handling update ${ctx.update.update_id}:`);
+    const e = err.error;
+    if (e instanceof GrammyError) {
+      console.error("Error in request:", e.description);
+    } else if (e instanceof HttpError) {
+      console.error("Could not contact Telegram:", e);
+    } else {
+      console.error("Unknown error:", e);
+    }
+});
 

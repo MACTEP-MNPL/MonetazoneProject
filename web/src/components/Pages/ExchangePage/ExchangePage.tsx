@@ -8,9 +8,11 @@ import './exchangePage.scss'
 import { Button } from "@/components/UI/Buttons/Button/Button";
 import { showAppPopUp, setAppType } from "@/store/appPopUpSlice.ts";
 import { useDispatch } from "react-redux";
+import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 
 
 export const ExchangePage = () => {
+    useDocumentTitle('ОБМЕН')
     const dispatch = useDispatch();
 
     const openExchangePopUp = () => {

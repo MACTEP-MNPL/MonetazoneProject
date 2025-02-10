@@ -11,8 +11,10 @@ import swift7 from '@/assets/svgs/swift-7.svg'
 import './swiftSepaPage.scss'
 import { useDispatch } from 'react-redux'
 import { showAppPopUp, setAppType } from '@/store/appPopUpSlice'
+import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 
 export const SwiftSepaPage = () => {
+    useDocumentTitle('SWIFT/SEPA')
     const dispatch = useDispatch()
 
     const showApplicationPopUp = () => {

@@ -1,9 +1,6 @@
 import { db } from '../index.js';
-import { createApplication } from './createApplication.js';
 
-export const createFeaTypeApplication = async (req) => {
-
-    const applicationId = await createApplication('fea')
+export const createFeaTypeApplication = async (req, applicationId) => {
 
     const {
         name,
@@ -35,9 +32,8 @@ export const createFeaTypeApplication = async (req) => {
             intake_money_jurisdiction, 
             amount,
             payment_method,
-            ip,
-            status
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+            ip
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         [
             applicationId,
             name,
@@ -49,10 +45,7 @@ export const createFeaTypeApplication = async (req) => {
             intakeMoneyJurisdiction,
             amount,
             paymentMethod,
-            ip,
-            'created'
+            ip
         ]
     );
-
-    return response;
 };

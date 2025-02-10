@@ -7,14 +7,16 @@ type MobInputProps = {
     state: string
     setState?: any
     placeholder?: string
+    isWide?: boolean
 }
 
-export const MobInput:FC<MobInputProps> = ({icon, type='text', state, setState, placeholder='Введите значение'}) => {
+export const MobInput:FC<MobInputProps> = ({icon, type='text', state, setState, placeholder='Введите значение', isWide=false}) => {
     return (
-        <div className="mobInput">
+        <div className="mobInput" style={{gridColumn: isWide ? '1 / 3' : 'auto'}}>
             {icon && (<div className="icon"><img src={icon} alt="icon" /></div>)}
             <input 
                 type={type} 
+
                 value={state} 
                 onChange={(e) => setState?.(e.target.value)} 
                 placeholder={placeholder}

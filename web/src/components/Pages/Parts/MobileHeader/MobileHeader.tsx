@@ -54,11 +54,11 @@ export const MobileHeader = () => {
                             <NavLink onClick={() => setIsOpen(false)} data-aos-duration="400" data-aos='fade-right'
                                      to='/fea'><Badge>ВЭД</Badge></NavLink>
                             <NavLink onClick={() => setIsOpen(false)} data-aos-duration="500" data-aos='fade-right'
-                                     to='/swiftsepa'><Badge>Swift / Sepa</Badge></NavLink>
+                                     to='/swiftsepa'><Badge>Swift/Sepa</Badge></NavLink>
                             <NavLink onClick={() => setIsOpen(false)} data-aos-duration="600" data-aos='fade-right'
                                      to='/exchange'><Badge>Обмен</Badge></NavLink>
                             <NavLink onClick={() => setIsOpen(false)} data-aos-duration="700" data-aos='fade-right'
-                                     to='/cash'><Badge>Выдача наличных</Badge></NavLink>
+                                     to='/cash'><Badge>Наличные</Badge></NavLink>
                         </div>
                     )}
                 </div>

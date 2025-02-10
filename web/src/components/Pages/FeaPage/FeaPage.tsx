@@ -5,9 +5,12 @@ import fea2 from '@/assets/svgs/fea-2.svg'
 import fea3 from '@/assets/svgs/fea-3.svg'
 import fea4 from '@/assets/svgs/fea-4.svg'
 import fea5 from '@/assets/svgs/fea-5.svg'
+import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 
 import './feaPage.scss'
+
 export const FeaPage = () => {
+    useDocumentTitle('ВЭД')
     return (
         <div className="page feaPage">
             <Section                            

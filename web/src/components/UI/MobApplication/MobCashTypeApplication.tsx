@@ -6,13 +6,13 @@ import { Button } from "@/components/UI/Buttons/Button/Button"
 import {useAppDispatch, useAppSelector} from "@/store/hooks"
 import { hideAppPopUp } from "@/store/appPopUpSlice"
 
-// Import icons
 import nameSVG from "@/assets/svgs/mobile/person.svg"
 import serviceSVG from "@/assets/svgs/mobile/service.svg"
 import officeSVG from "@/assets/svgs/mobile/office.svg"
 import dateSVG from "@/assets/svgs/mobile/clock.svg"
 import globeSVG from "@/assets/svgs/mobile/globe.svg"
 import compassSVG from "@/assets/svgs/mobile/compass.svg"
+import walletSVG from "@/assets/svgs/mobile/wallet.svg"
 
 import usdSVG from "@/assets/svgs/mobile/usd.svg"
 import euroSVG from "@/assets/svgs/mobile/euro.svg"
@@ -23,12 +23,11 @@ import usdtSVG from "@/assets/svgs/mobile/usdt.svg"
 import { countries } from "@/utils/countries"
 import { CashApplicationData } from "@/components/UI/MobApplication/application"
 import { ErrorMessage } from "@/components/UI/ErrorMessage/ErrorMessage.tsx"
-
+import { endpoints } from "@/utils/api"
 export const MobCashTypeApplication: FC = () => {
     const {isCash, whatCountry} = useAppSelector(state => state.appPopUp)
 
     const [submitError, setSubmitError] = useState<string | null>(null)
-
 
     const dispatch = useAppDispatch()
     const [currentStep, setCurrentStep] = useState(1)
@@ -38,6 +37,7 @@ export const MobCashTypeApplication: FC = () => {
     const [office, setOffice] = useState('')
     const [date, setDate] = useState<any>('')
 
+    const [amount, setAmount] = useState('')
     const [country, setCountry] = useState(whatCountry)
     const [city, setCity] = useState('')
     const [currency, setCurrency] = useState('')
@@ -53,8 +53,6 @@ export const MobCashTypeApplication: FC = () => {
     const [error, setError] = useState<string | null>(null)
 
     const TOTAL_STEPS = type === 'Обмен валют' ? 3 : 4
-
-    const MARGIN_PERCENT = -10; // 2% margin, you can adjust this
 
     const AVAILABLE_PAIRS = {
         'USDT': ['USD', 'RUB', 'EUR'],
@@ -111,6 +109,7 @@ export const MobCashTypeApplication: FC = () => {
                     date: date ? new Date(date).toLocaleDateString() : '',
                     office,
                     details: {
+                        amount,
                         country,
                         currency,
                         city,
@@ -119,7 +118,7 @@ export const MobCashTypeApplication: FC = () => {
                 }
             ) as CashApplicationData;
 
-            const response = await fetch('http://localhost:2999/new', {
+            const response = await fetch(endpoints.newApplication, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -127,20 +126,17 @@ export const MobCashTypeApplication: FC = () => {
                 body: JSON.stringify(applicationData)
             });
 
-            if (!response.ok) {
-                throw new Error('Failed to submit application');
-            }
 
             const result = await response.json();
             
             if (result.success) {
                 dispatch(hideAppPopUp());
+                window.open(result.chatLink, '_blank');
             } else {
                 setSubmitError('Произошла ошибка во время отправки заявки')
             }
         } catch (error) {
             setSubmitError('Произошла ошибка во время отправки заявки')
-            console.error('Error submitting application:', error);
         }
     };
 
@@ -156,14 +152,19 @@ export const MobCashTypeApplication: FC = () => {
         }
     }
 
-    const calculateMargin = (rate: number) => {
-        return rate * (1 + MARGIN_PERCENT / 100);
+    const calculateMargin = (rate: number, margin: number) => {
+        return rate * (1 + margin / 100);
     }
 
     const fetchExchangeRate = async (fromCurrency: string, toCurrency: string) => {
         try {
             setIsLoading(true)
             setError(null)
+
+            const marginResponse = await fetch(endpoints.margin)
+                const marginData = await marginResponse.json()
+                const margin = marginData.margin
+
             
             // If USDT is involved, use direct rate
             if (fromCurrency === 'USDT' || toCurrency === 'USDT') {
@@ -171,12 +172,13 @@ export const MobCashTypeApplication: FC = () => {
                                                       : `${toCurrency.toLowerCase()}${fromCurrency.toLowerCase()}`;
                 const response = await fetch(`https://garantex.org/api/v2/depth?market=${market}`);
                 const data = await response.json();
-                
+
                 if (data.asks && data.asks[0]) {
                     const rate = parseFloat(data.asks[0].price);
                     const finalRate = fromCurrency === 'USDT' ? rate : 1 / rate;
-                    setExchangeRate(calculateMargin(finalRate));
+                    setExchangeRate(calculateMargin(finalRate, margin));
                 }
+
             } else {
                 // For non-USDT pairs (like USD/RUB, EUR/RUB), convert through USDT
                 const fromToUsdt = await getDirectRate('USDT', fromCurrency);  // Get USDT/USD rate
@@ -185,7 +187,7 @@ export const MobCashTypeApplication: FC = () => {
                 if (fromToUsdt && toToUsdt) {
                     // Calculate cross rate: first convert to USDT, then to target currency
                     const crossRate = (1 / fromToUsdt) * toToUsdt;
-                    setExchangeRate(calculateMargin(crossRate));
+                    setExchangeRate(calculateMargin(crossRate, margin));
                 }
             }
         } catch (error) {
@@ -247,6 +249,7 @@ export const MobCashTypeApplication: FC = () => {
     }, [giveAmountCurrency, getAmountCurrency, giveAmount]);
 
     // Add a separate effect to update getAmount whenever exchangeRate or giveAmount changes
+
     useEffect(() => {
         if (exchangeRate && giveAmount) {
             calculateGetAmount(giveAmount);
@@ -374,8 +377,16 @@ export const MobCashTypeApplication: FC = () => {
                                     setValue={setCurrency}
                                 />
 
-
+                                <MobInput
+                                    icon={walletSVG}
+                                    placeholder="Сумма сделки"
+                                    state={amount}
+                                    setState={setAmount}
+                                    type="number"
+                                    isWide
+                                />
                             </>
+
                         )
 
                         }
